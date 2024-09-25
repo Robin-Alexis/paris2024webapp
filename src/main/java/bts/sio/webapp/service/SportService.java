@@ -12,7 +12,30 @@ public class SportService {
 
     @Autowired
     private SportProxy sportProxy;
+
+    public Sport getSport(final int id) {
+        return sportProxy.getSport(id);
+    }
+
     public Iterable<Sport> getLesSports() {
         return sportProxy.getLesSports();
     }
+
+    public void deleteSport(final int id) {
+        sportProxy.deleteSport(id);
+    }
+
+    public Sport saveSport(Sport sport) {
+        Sport savedSport;
+
+
+        if (sport.getId() == null) {
+            savedSport = sportProxy.createSport(sport);
+        } else {
+            savedSport = sportProxy.updateSport(sport);
+        }
+
+        return savedSport;
+    }
+
 }
