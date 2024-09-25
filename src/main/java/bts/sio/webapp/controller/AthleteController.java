@@ -73,7 +73,6 @@ public class AthleteController {
         System.out.println("controller save=" + athlete.getNom());
         if(athlete.getId() != null) {
             Athlete current = athleteservice.getAthlete(athlete.getId());
-            athlete.setNom(current.getNom());
         }
         athleteservice.saveAthlete(athlete);
         return new ModelAndView("redirect:/");
