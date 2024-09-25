@@ -95,6 +95,8 @@ public class AthleteProxy {
 
         RestTemplate restTemplate = new RestTemplate();
         HttpEntity<Athlete> request = new HttpEntity<Athlete>(e);
+
+
         ResponseEntity<Athlete> response = restTemplate.exchange(
                 updateAthleteUrl,
                 HttpMethod.PUT,
