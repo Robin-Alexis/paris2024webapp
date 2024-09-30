@@ -32,7 +32,8 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href=".">Système de gestion des athlètes</a>
+				<a class="navbar-brand" href=".">Athlètes</a>
+				<a class="navbar-brand" href="/sports">Sports</a>
 			</div>
 		</div>
 	</nav>
@@ -48,6 +49,8 @@
 						<th>Nom</th>
 						<th>Date de naissance</th>
 						<th>Pays</th>
+						<th>Sport</th>
+						<th>Olympiades</th>
 						<th>Action</th>
 					</tr>
 				</thead>
@@ -59,11 +62,19 @@
 						<td><span th:text="${athlete.prenom}"> Prenom </span></td>
 						<td><span th:text="${athlete.nom}"> Nom </span></td>
 						<!--td><span th:text="${#dates.format(athlete.datenaiss, 'dd-MM-yyyy')}"> Nom </span></td-->
-						<td><span th:text="${#temporals.format(athlete.datenaiss, 'dd-MM-yyyy HH:mm')}"> Nom </span></td>
+						<td><span th:text="${#temporals.format(athlete.datenaiss, 'dd-MM-yyyy')}"> Nom </span></td>
 						<td><span th:text="${athlete.pays.nom}"> Nom </span></td>
+						<td><span th:text="${athlete.sport.nom}"> Nom </span></td>
+						<td>
+							<ul th:each="olympiade : ${athlete.olympiades}">
+								<li th:text="${olympiade.numero}"></li>
+							</ul>
+						</td>
 						<td>
 							<a th:href="@{/updateAthlete/{id}(id=${athlete.id})}"><button class="btn btn-info">Modifier</button></a>
-							<a th:href="@{/deleteAthlete/{id}(id=${athlete.id})}"><button class="btn btn-danger">Supprimer</button></a>
+							<a th:href="@{/deleteAthlete/{id}(id=${athlete.id})}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet athlète ?');">
+								<button class="btn btn-danger">Supprimer</button>
+							</a>
 						</td>
 					</tr>
 				</tbody>
