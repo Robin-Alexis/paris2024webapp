@@ -17,4 +17,6 @@ public class Athlete {
     private Sport sport;
 
     private ArrayList<Olympiade> olympiades = new ArrayList<>();
+    private ArrayList<Epreuve> epreuves = new ArrayList<>();
+
 }
