@@ -61,6 +61,15 @@ body {
 						id="nomHelp" class="form-text text-muted">Merci d'écrire le nom de l'athlète.</small>
 				</div>
 
+				<label for="dateNaissInput">Date Naissance</label>
+				<input
+						type="date" th:field="*{dateNaiss}" class="form-control" id="dateNaissInputInput"
+						aria-describedby="dateNaissInputHelp" placeholder="Saisir la date de naissance"> <small
+					id="dateNaissInputHelp" class="form-text text-muted">Merci d'écrire la date de naissance de l'athlète.</small>
+
+				</br>
+				</br>
+
 				<div class="form-group">
 					<label for="pays">Pays :</label>
 					<select id="pays" class="form-control" th:field="*{pays.id}">
