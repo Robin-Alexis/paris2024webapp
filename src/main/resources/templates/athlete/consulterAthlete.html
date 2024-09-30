@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Détails de l'Athlète</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Athlètes</a>
+            <a class="navbar-brand" href="/sports">Sports</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container" style="padding-top: 70px;">
+    <h2>Détails de l'Athlète</h2>
+    <div class="well">
+        <h4><b>Prénom :</b><span th:text="${athlete.prenom}">Prénom de l'athlète</span></h4>
+        <h4><b>Nom :</b></b><span th:text="${athlete.nom}">Nom de l'athlète</span></h4>
+        <h4><b>Date de naissance :</b><span th:text="${#temporals.format(athlete.dateNaiss, 'dd-MM-yyyy')}">Date de naissance</span></h4>
+        <h4><b>Pays :</b>
+            <span th:if="${athlete.pays != null}" th:text="${athlete.pays.nom}">Nom du pays</span>
+            <span th:if="${athlete.pays == null}">Aucun pays</span>
+        </h4>
+        <h4><b>Sport:</b><span th:text="${athlete.sport.nom}">Nom du sport</span></h4>
+        <h4><b>Olympiades :</b>
+            <span th:each="olympiade, stat : ${athlete.olympiades}">
+                <span th:text="${olympiade.numero}"></span><span th:if="${!stat.last}">, </span>
+            </span>
+        </h4>
+        <h4><b>Epreuves :</b>
+            <span th:each="epreuve, stat : ${athlete.epreuves}">
+                <span th:text="${epreuve.nom}"></span><span th:if="${!stat.last}">, </span>
+            </span>
+        </h4>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
