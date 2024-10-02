@@ -58,7 +58,7 @@
         <td colspan="3">Aucune actualité en base de données</td>
       </tr>
       <tr th:each="actualite: ${actualites}">
-        <td><span th:text="${actualite.titre}"> Titre </span></td>
+        <td><a th:href="@{/consulterActualite/{id}(id=${actualite.id})}"><span th:text="${actualite.titre}"> Titre </span></a></td>
         <td><span th:text="${#temporals.format(actualite.date, 'dd-MM-yyyy')}"> Date </span></td>
         <td><span th:text="${actualite.contenu}"> Contenu </span></td>
         <td><span th:text="${actualite.sport.nom}"> Nom </span></td>
