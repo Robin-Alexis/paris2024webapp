@@ -1,8 +1,5 @@
 package bts.sio.webapp.controller;
 
-
-import bts.sio.webapp.model.Athlete;
-import bts.sio.webapp.model.Pays;
 import bts.sio.webapp.model.Sport;
 import bts.sio.webapp.service.SportService;
 import lombok.Data;
@@ -57,9 +54,6 @@ public class SportController {
     @PostMapping("/sport/saveSport")
     public ModelAndView saveSport(@ModelAttribute Sport sport) {
         System.out.println("controller save=" + sport.getNom());
-        if(sport.getId() != null) {
-            Sport current = sportService.getSport(sport.getId());
-        }
         sportService.saveSport(sport);
         return new ModelAndView("redirect:/sports");
     }
