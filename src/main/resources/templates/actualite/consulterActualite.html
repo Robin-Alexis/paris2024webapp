@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Détails de l'Athlète</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Athlètes</a>
+            <a class="navbar-brand" href="/sports">Sports</a>
+            <a class="navbar-brand" href="/epreuves">Épreuves</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container" style="padding-top: 70px;">
+    <h2>Détails de l'actualité</h2>
+    <div class="well">
+        <h4><b>Titre :</b><span th:text="${actualite.titre}">Titre de l'actualité</span></h4>
+        <h4><b>Date :</b><span th:text="${#temporals.format(actualite.date, 'dd-MM-yyyy')}">Date</span></h4>
+        <h4><b>Contenu :</b></b><span th:text="${actualite.contenu}">Contenu de l'actualité</span></h4>
+
+        <h4><b>Sport :</b>
+            <span th:if="${actualite.sport != null}" th:text="${actualite.sport.nom}">Nom du sport</span>
+            <span th:if="${actualite.sport == null}">Aucun sport</span>
+        </h4>
+
+        <h4><b>Epreuve :</b>
+            <span th:if="${actualite.epreuve != null}" th:text="${actualite.epreuve.nom}">Nom de l'épreuve</span>
+            <span th:if="${actualite.epreuve == null}">Aucune épreuve</span>
+        </h4>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

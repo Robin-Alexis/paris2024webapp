@@ -39,4 +39,26 @@ public class ActualiteProxy {
 
         return response.getBody();
     }
+
+    /**
+     * Get an actualite by the id
+     * @param id The id of the actualite
+     * @return The actualite which matches the id
+     */
+    public Actualite getActualite(int id) {
+        String baseApiUrl = props.getApiUrl();
+        String getActualiteUrl = baseApiUrl + "/actualite/" + id;
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<Actualite> response = restTemplate.exchange(
+                getActualiteUrl,
+                HttpMethod.GET,
+                null,
+                Actualite.class
+        );
+
+        log.debug("Get Actualite call " + response.getStatusCode().toString());
+
+        return response.getBody();
+    }
 }
