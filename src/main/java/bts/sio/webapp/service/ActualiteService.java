@@ -22,4 +22,17 @@ public class ActualiteService {
         return actualiteProxy.getActualite(id);
     }
 
+    public Actualite saveActualite(Actualite actualite) {
+        Actualite savedActualite;
+
+        if(actualite.getId() == null) {
+            // If id is null, then it is a new employee.
+            savedActualite = actualiteProxy.createActualite(actualite);
+        } else {
+            savedActualite = actualiteProxy.updateActualite(actualite);
+        }
+
+        return savedActualite;
+    }
+
 }

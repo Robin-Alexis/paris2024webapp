@@ -61,4 +61,51 @@ public class ActualiteProxy {
 
         return response.getBody();
     }
+
+    /**
+     * Add a new actualite
+     * @param a A new actualite (without an id)
+     * @return The actualite full filled (with an id)
+     */
+    public Actualite createActualite(Actualite a) {
+
+        String baseApiUrl = props.getApiUrl();
+        String createActualiteUrl = baseApiUrl + "/actualite";
+
+        RestTemplate restTemplate = new RestTemplate();
+        HttpEntity<Actualite> request = new HttpEntity<Actualite>(a);
+        ResponseEntity<Actualite> response = restTemplate.exchange(
+                createActualiteUrl,
+                HttpMethod.POST,
+                request,
+                Actualite.class);
+
+        log.debug("Create Actualité call " + response.getStatusCode().toString());
+
+        return response.getBody();
+    }
+
+
+    /**
+     * Update an actualite - using the PUT HTTP Method.
+     * @param a Existing actualite to update
+     */
+    public Actualite updateActualite(Actualite a) {
+        String baseApiUrl = props.getApiUrl();
+        String updateActualiteUrl = baseApiUrl + "/actualite/" + a.getId();
+
+        RestTemplate restTemplate = new RestTemplate();
+        HttpEntity<Actualite> request = new HttpEntity<Actualite>(a);
+
+
+        ResponseEntity<Actualite> response = restTemplate.exchange(
+                updateActualiteUrl,
+                HttpMethod.PUT,
+                request,
+                Actualite.class);
+
+        log.debug("Update Actualite call " + response.getStatusCode().toString());
+
+        return response.getBody();
+    }
 }
