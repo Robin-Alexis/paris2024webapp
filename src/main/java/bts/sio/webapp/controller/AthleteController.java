@@ -38,7 +38,7 @@ public class AthleteController {
         return "home";
     }
 
-    @GetMapping("/createAthlete")
+    @GetMapping("/athlete/createAthlete")
     public String createAthlete(Model model) {
         Athlete a = new Athlete();
         model.addAttribute("athlete", a);
@@ -60,7 +60,7 @@ public class AthleteController {
         return "athlete/consulterAthlete";
     }
 
-    @GetMapping("/updateAthlete/{id}")
+    @GetMapping("/athlete/updateAthlete/{id}")
     public String updateAthlete(@PathVariable("id") final int id, Model model) {
         Athlete a = athleteservice.getAthlete(id);
         model.addAttribute("athlete", a);
@@ -76,7 +76,7 @@ public class AthleteController {
         return new ModelAndView("redirect:/");
     }
 
-    @PostMapping("/saveAthlete")
+    @PostMapping("/athlete/saveAthlete")
     public ModelAndView saveAthlete(@ModelAttribute Athlete athlete) {
         System.out.println("controller save=" + athlete.getNom());
         athleteservice.saveAthlete(athlete);
