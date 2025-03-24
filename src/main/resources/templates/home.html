@@ -62,7 +62,11 @@
 					</tr>
 					<tr th:each="athlete: ${athletes}">
 						<td><span th:text="${athlete.prenom}"> Prenom </span></td>
-						<td><a th:href="@{/consulterAthlete/{id}(id=${athlete.id})}"><span th:text="${athlete.nom}"> Nom </span></a></td>
+						<td>
+							<a th:href="@{/consulterAthlete/{id}(id=${athlete.id})}">
+								<span th:text="${athlete.nom != null ? athlete.nom : 'Inconnu'}">Nom</span>
+							</a>
+						</td>
 						<!--td><span th:text="${#dates.format(athlete.datenaiss, 'dd-MM-yyyy')}"> Nom </span></td-->
 						<td><span th:text="${#temporals.format(athlete.dateNaiss, 'dd-MM-yyyy')}"> Nom </span></td>
 						<td><span th:text="${athlete.pays.nom}"> Nom </span></td>
@@ -73,7 +77,7 @@
 							</ul>
 						</td>
 						<td>
-							<a th:href="@{/updateAthlete/{id}(id=${athlete.id})}"><button class="btn btn-info">Modifier</button></a>
+							<a th:href="@{/athlete/updateAthlete/{id}(id=${athlete.id})}"><button class="btn btn-info">Modifier</button></a>
 							<a th:href="@{/deleteAthlete/{id}(id=${athlete.id})}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet athlète ?');">
 								<button class="btn btn-danger">Supprimer</button>
 							</a>
@@ -82,8 +86,7 @@
 				</tbody>
 			</table>
 		</div>
-		<h4><a th:href="@{/createAthlete}">Ajouter un nouvel athlete</a></h4>
-
+		<h4><a th:href="@{/athlete/createAthlete}">Ajouter un nouvel athlete</a></h4>
 	</div>
 
 	<script

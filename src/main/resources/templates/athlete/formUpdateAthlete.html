@@ -33,7 +33,7 @@ body {
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="..">Athlètes</a>
+				<a class="navbar-brand" href="../../">Athlètes</a>
 				<a class="navbar-brand" href="/sports">Sports</a>
 				<a class="navbar-brand" href="/epreuves">Épreuves</a>
 				<a class="navbar-brand" href="/actualites">Actualité</a>
@@ -47,7 +47,7 @@ body {
 		<h2 class="h2">Modification d'un athlète</h2>
 		<div>
 			<form method="post"
-				th:action="@{/saveAthlete}" th:object="${athlete}">
+				th:action="@{/athlete/saveAthlete}" th:object="${athlete}">
 				<div class="form-group">
 					<input
 						type="hidden" th:field="*{id}" class="form-control">
